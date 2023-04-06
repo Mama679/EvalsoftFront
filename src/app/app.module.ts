@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 //Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,9 @@ import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { RouterComponent } from './components/router/router.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { AuthGuard } from './auth.guard';
+import { TokeninterceptorService } from './services/tokeninterceptor.service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -39,7 +42,15 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     ToastrModule,
     HttpClientModule
   ],
-  providers: [ ],
+  providers: [
+    AuthService,
+    AuthGuard,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokeninterceptorService,
+      multi:true
+    }
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
