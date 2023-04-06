@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
+import { HttpClientModule } from '@angular/common/http';
+//Components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -15,6 +16,8 @@ import { RouterComponent } from './components/router/router.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     VehiclesComponent,
     RouterComponent,
     ScheduleComponent,
-    NotfoundComponent
+    NotfoundComponent,    
   ],
   imports: [
     BrowserModule,
@@ -33,9 +36,10 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ToastrModule
+    ToastrModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,19 +4,27 @@
             <div class="card-header">
                 Sign Up
             </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label for="nomuser" class="form-label">User</label>
-                    <input type="text" name="nomuser" class="form-control" [(ngModel)]="user.nomuser" placeholder="User" required autofocus/>
+            <form [formGroup]="userForm">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="nomuser" class="form-label">User</label>
+                        <input type="text" name="nomuser" class="form-control" formControlName="usernom" placeholder="User" required autofocus/>
+                        <div class="text-danger" *ngIf="userForm.get('usernom')?.hasError('required') && userForm.get('usernom')?.touched">
+                            <span>User name is required.</span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" formControlName="password" placeholder="Password" required />
+                        <div class="text-danger" *ngIf="userForm.get('password')?.hasError('required') && userForm.get('password')?.touched">
+                            <span>Password is required.</span>
+                        </div>
+                    </div>                
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" [(ngModel)]="user.password" placeholder="Password" required />
-                </div>                
-            </div>
-            <div class="card-footer">
-                <button type="button" class="btn btn-primary" (click)="login()">Login</button>
-            </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" (click)="login()" [disabled]="userForm.invalid">Login</button>
+                </div>
+            </form>
        </div>        
         
     </div>
