@@ -9,6 +9,7 @@ import { RouterComponent } from './components/router/router.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { VehiclesComponent } from './components/vehicles/vehicles.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
+import { FormDriverComponent } from './components/form-driver/form-driver.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -20,6 +21,8 @@ const routes: Routes = [
   {path:'schedule',component:ScheduleComponent, canActivate:[AuthGuard]},
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
+  {path:'admindriver', component:FormDriverComponent,canActivate:[AuthGuard]},
+  {path:'editDrive/:id',component:FormDriverComponent,canActivate:[AuthGuard]},
   {path:'', redirectTo:'home',pathMatch:'full'},
   {path:'**', component:NotfoundComponent}
 ];

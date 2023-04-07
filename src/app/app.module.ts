@@ -18,6 +18,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { AuthGuard } from './auth.guard';
 import { TokeninterceptorService } from './services/tokeninterceptor.service';
 import { AuthService } from './services/auth.service';
+import { FormDriverComponent } from './components/form-driver/form-driver.component';
 
 
 
@@ -31,7 +32,8 @@ import { AuthService } from './services/auth.service';
     VehiclesComponent,
     RouterComponent,
     ScheduleComponent,
-    NotfoundComponent,    
+    NotfoundComponent,
+    FormDriverComponent,    
   ],
   imports: [
     BrowserModule,
